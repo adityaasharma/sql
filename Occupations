@@ -1,0 +1,5 @@
+## https://hackerrank-challenge-pdfs.s3.amazonaws.com/12890-occupations-English?AWSAccessKeyId=AKIAJ4WZFDFQTZRGO3QA&Expires=1550726766&Signature=wnJlEiDqYKLvMf12%2F9Gi4mylWJs%3D&response-content-disposition=inline%3B%20filename%3Doccupations-English.pdf&response-content-type=application%2Fpdf
+# Platform Oracle SQL
+
+SELECT DOCTOR, PROFESSOR, SINGER, ACTOR FROM (SELECT ROW_NUMBER() OVER (PARTITION BY OCCUPATION ORDER BY NAME) AS RN, NAME, OCCUPATION FROM OCCUPATIONS)
+PIVOT (MAX(NAME) FOR OCCUPATION IN ('Doctor' AS DOCTOR, 'Professor' AS PROFESSOR, 'Singer' AS SINGER, 'Actor' AS ACTOR)) ORDER BY RN;
